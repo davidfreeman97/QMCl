@@ -9,6 +9,7 @@ training_initial = training(:,50000); %starting point of training data trajector
 new_data = 5000; %amount of data to produce
 timestep = .01; %timestep of QMCl model output 
 N = 70000; %amount of training data
+meas_eps = 1;
 L = 1000; %spectral resolution
 Q = 5; %delay-embedding window 
 K = 3; %number of timesteps between quantum state updates in QMCl model
