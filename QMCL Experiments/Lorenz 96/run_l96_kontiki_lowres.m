@@ -1,0 +1,37 @@
+dt = .01;
+nx = 9; 
+ny=8;
+hx = -0.8;
+hy = 1;
+%F = 5;
+epsilon =1/128;
+ntot   = (ny+1)*nx;
+F = 10;
+%timestep of modeled system
+
+
+%ad hoc choice 
+%also ad-hocly switched position of ntot and 1 
+
+ x0      = zeros( ntot, 1 );
+ x0(1) = 1;
+ x0(nx+1) = 1;
+
+%QM_start = spinup_QM_data(:, 10000);
+%x0 = QM_start;
+
+intermediate = generate_l96_training_data(x0, F, hx, hy, epsilon, nx, ny, .01, 20000);
+QM_start = intermediate(:, 20000); 
+
+ x0      = zeros( ntot, 1 );
+ x0(1) = 1;
+ x0(nx+1) = 1.1;
+
+%QM_start = spinup_QM_data(:, 10000);
+%x0 = QM_start;
+
+intermediate_2 = generate_l96_training_data(x0, F, hx, hy, epsilon, nx, ny, .01, 20000);
+training_start = intermediate_2(:, 20000); 
+
+data = L96_QMDA_Main_deterministic_RK4_lowres_training(100000, F, "yes", [2;2], training_start, QM_start, 40000);
+save("L96_Kontiki_Output_lowres", "data");
