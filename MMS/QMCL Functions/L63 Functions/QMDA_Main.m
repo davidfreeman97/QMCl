@@ -1,4 +1,4 @@
-function [data] = QMDA_Main(amount_of_new_data, timestep, amount_of_training_data, initial_classical_state, initial_training_state, generate_eigs, phi, steps_between_draws, spectral_resolution, meas_eps )
+function [data] = QMDA_Main(amount_of_new_data, timestep, amount_of_training_data, initial_classical_state, initial_training_state, generate_eigs, phi, steps_between_draws, spectral_resolution, meas_eps, training_eps )
 %amount_of_training_data = 15;
 %amount_of_new_data = 8;
 spectral_resolution = 1200; 
@@ -26,7 +26,7 @@ x(1)=initial_training_state(1); y(1)=initial_training_state(2); z(1)=initial_tra
 training_data = transpose(training_data);
 
 if(generate_eigs == true)
-phi = generate_eigenfunction_basis(training_data, spectral_resolution);
+phi = generate_eigenfunction_basis(training_data, spectral_resolution, training_eps);
 else 
 phi = phi; 
 end
