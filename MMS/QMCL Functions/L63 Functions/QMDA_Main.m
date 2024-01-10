@@ -1,4 +1,4 @@
-function [data] = QMDA_Main(amount_of_new_data, timestep, amount_of_training_data, initial_classical_state, initial_training_state, generate_eigs, phi, steps_between_draws)
+function [data] = QMDA_Main(amount_of_new_data, timestep, amount_of_training_data, initial_classical_state, initial_training_state, generate_eigs, phi, steps_between_draws, spectral_resolution, meas_eps )
 %amount_of_training_data = 15;
 %amount_of_new_data = 8;
 spectral_resolution = 1200; 
@@ -53,7 +53,7 @@ if(k<(steps_between_draws-1))
 k=k+1; 
 else
 g = draw_y(rho, S, spectral_resolution);
-new_rho = update_rho(rho, phi, new_covariate, training_data, 40);
+new_rho = update_rho(rho, phi, new_covariate, training_data, meas_eps);
 
 
 rho = new_rho;
