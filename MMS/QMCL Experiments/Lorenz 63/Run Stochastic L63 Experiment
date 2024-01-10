@@ -8,8 +8,5 @@ QM = transpose(QM);
 QM_initial = QM(:,500000);
 training_initial = training(:,500000);
 
-%data_kontiki_output = QMDA_Main_deterministic_RK4(30000, .01, 75000, QM_initial, training_initial, 2.5, 1500, 1);
-%save("Konitki_Output_Data_2", "data_kontiki_output")
-
-data_kontiki_output = QMDA_Main(20000, .01, 20000, QM_initial, training_initial);
-save("Konitki_Stochastic_Output_Data_2", "data_kontiki_output")
+data_output = QMDA_Main(amount_of_new_data, timestep, amount_of_training_data, initial_classical_state, initial_training_state, generate_eigs, phi, steps_between_draws)
+save("data_output", "data_output")
