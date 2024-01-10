@@ -1,12 +1,20 @@
 [training] = ode4(@l63_for_ode_solvers,[0:.01:5000],[1;0;0]);
 [QM] = ode4(@l63_for_ode_solvers,[0:.01:5000],[1.01; 0;0]);
 
-dbstop if error
-
 training = transpose(training);
 QM = transpose(QM);
 QM_initial = QM(:,500000);
 training_initial = training(:,500000);
 
-data_output = QMDA_Main(amount_of_new_data, timestep, amount_of_training_data, initial_classical_state, initial_training_state, generate_eigs, phi, steps_between_draws)
+new_data = 5000; %amount of data to produce
+timestep = .01; %timestep of QMCl model output 
+N = 70000; %amount of training data
+meas_eps = 1;
+L = 1000; %spectral resolution
+K = 3; %number of timesteps between quantum state updates in QMCl model
+
+
+
+
+data_output = QMDA_Main(amount_of_new_data, timestep, N, QM_initial, training_initial, true, 0, K)
 save("data_output", "data_output")
