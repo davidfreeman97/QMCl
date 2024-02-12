@@ -1,4 +1,4 @@
-function [data] = QMDA_Main_deterministic_RK4(amount_of_new_data, timestep, amount_of_training_data, initial_classical_state, initial_training_state, measurement_epsilon, spectral_res, generate_eig_fns, eig_fns, generate_training_data, training_data_input, embed_initial)
+function [data] = QMDA_Main_deterministic_RK4(amount_of_new_data, timestep, amount_of_training_data, initial_classical_state, initial_training_state, measurement_epsilon, training_epsilon, spectral_res, generate_eig_fns, eig_fns, generate_training_data, training_data_input, embed_initial)
 %amount_of_training_data = 15;
 %amount_of_new_data = 8;
 %spectral_resolution = 1500; 
@@ -43,7 +43,7 @@ training_data = training_data_input;
 end
 
 if generate_eig_fns == true
-phi = generate_eigenfunction_basis(training_data, spectral_resolution);
+phi = generate_eigenfunction_basis(training_data, spectral_resolution, training_epsilon);
 else
 phi = eig_fns;
 end
