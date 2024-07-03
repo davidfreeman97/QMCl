@@ -2,10 +2,7 @@ function [data] = QMDA_Main(amount_of_new_data, timestep, amount_of_training_dat
 %amount_of_training_data = 15;
 %amount_of_new_data = 8;
 spectral_resolution = 1200; 
-%timestep = .01;
 training_timestep = .01;
-
-%initial_covariate = [5;5];
 
 %generates the initial quantum pdf
 A = zeros(spectral_resolution,spectral_resolution); 
@@ -16,9 +13,7 @@ x = zeros(amount_of_training_data, 1);
 y = zeros(amount_of_training_data, 1);
 z = zeros(amount_of_training_data, 1);
 %generates training data on L63 system 
-%sig=10.0; b=8/3; r=20;
 t(1)=0.0;
-%x(1)=1.95; y(1)=1.95; z(1)=1.95;   
 x(1)=initial_training_state(1); y(1)=initial_training_state(2); z(1)=initial_training_state(3); 
 
 
