@@ -3,7 +3,6 @@ nx = 9;
 ny=8;
 hx = -0.8;
 hy = 1;
-%F = 5;
 epsilon =1/128;
 ntot   = (ny+1)*nx;
 F = 10;
@@ -24,4 +23,4 @@ intermediate_2 = generate_l96_training_data(x0, F, hx, hy, epsilon, nx, ny, .01,
 training_start = intermediate_2(:, 20000); 
 
 data = L96_QMDA_Main_deterministic_RK4(100000, F, "yes", [2;2], training_start, QM_start, 40000);
-save("L96_Kontiki_Output_new", "data");
+save("L96_Output", "data");
