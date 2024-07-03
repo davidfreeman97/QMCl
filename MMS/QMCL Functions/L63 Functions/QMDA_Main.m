@@ -25,6 +25,11 @@ else
 phi = phi; 
 end
 
+%Approximates Koopman operator represented in Phi basis
+phi_1 = phi(1:(N-1), :);
+phi_2 = phi(2:N, :);
+U = ((phi_1).')*phi_2;
+
 Y = training_data(3,:);
 S = generate_S(phi, Y); 
 
@@ -39,7 +44,7 @@ g = draw_y(initial_rho, S, spectral_resolution);
 for index=1:amount_of_new_data
 
 new_covariate = RK4_Step(classical_state, timestep);
-rho = evolve_rho(rho, phi);
+rho = evolve_rho_fast(rho, U);
 
 covariate = new_covariate ;
 
