@@ -18,4 +18,4 @@ K = 3; %number of timesteps between quantum state updates in QMCl model
 
 
 data_output = QMDA_Main(amount_of_new_data, timestep, N, QM_initial, training_initial, true, 0, K, L, meas_eps, training_eps)
-save("data_output", "data_output")
+save("stochastic_data_output", "data_output")
